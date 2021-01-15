@@ -13,8 +13,10 @@ AFlyingBox::AFlyingBox()
 	FlyingBox = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	FlyingBox->SetupAttachment(RootComponent);
 
+	//getting cube static mesh from start content
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeVisualAsset(TEXT("/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube"));
 
+	//if cube mesh is succesfully loaded in
 	if (CubeVisualAsset.Succeeded())
 	{
 		FlyingBox->SetStaticMesh(CubeVisualAsset.Object);
@@ -34,13 +36,14 @@ void AFlyingBox::BeginPlay()
 // Called every frame
 void AFlyingBox::Tick(float DeltaTime)
 {
-	
+	//movement
+
 	FVector NewLocation = GetActorLocation();
 	FRotator NewRotation = GetActorRotation();
 	float RunningTime = GetGameTimeSinceCreation();
 	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
-	NewLocation.Z += DeltaHeight * FloatSpeed;          //Scale our height by FloatSpeed
-	float DeltaRotation = DeltaTime * RotationSpeed;    //Rotate by a number of degrees equal to RotationSpeed each second
+	NewLocation.Z += DeltaHeight * FloatSpeed;          
+	float DeltaRotation = DeltaTime * RotationSpeed;   
 	NewRotation.Yaw += DeltaRotation;
 	SetActorLocationAndRotation(NewLocation, NewRotation);
 }
