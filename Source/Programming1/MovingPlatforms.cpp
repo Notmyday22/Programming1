@@ -13,8 +13,9 @@ AMovingPlatforms::AMovingPlatforms()
 	FlyingBox = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	FlyingBox->SetupAttachment(RootComponent);
 
+	//calling cubeshape from starter content
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeVisualAsset(TEXT("/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube"));
-
+	//if cube mesh is succesfully loaded in
 	if (CubeVisualAsset.Succeeded())
 	{
 		FlyingBox->SetStaticMesh(CubeVisualAsset.Object);
@@ -34,7 +35,7 @@ void AMovingPlatforms::BeginPlay()
 void AMovingPlatforms::Tick(float DeltaTime)
 {
 	
-	
+	//movement
 	FVector NewLocation = GetActorLocation();
 	FRotator NewRotation = GetActorRotation();
 	float RunningTime = GetGameTimeSinceCreation();

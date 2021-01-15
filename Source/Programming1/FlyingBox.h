@@ -20,10 +20,9 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		UStaticMeshComponent* FlyingBox;
 
+	//To make variables editable in editor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FloatingActor")
 		float FloatSpeed = FMath::RandRange(70.0f,120.0f);
-
-	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FloatingActor")
 		float RotationSpeed = 5.0f;

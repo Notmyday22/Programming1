@@ -13,7 +13,7 @@ AFlyingBox::AFlyingBox()
 	FlyingBox = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	FlyingBox->SetupAttachment(RootComponent);
 
-	//getting cube static mesh from start content
+	//calling and getting cube static mesh from starter content
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeVisualAsset(TEXT("/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube"));
 
 	//if cube mesh is succesfully loaded in
